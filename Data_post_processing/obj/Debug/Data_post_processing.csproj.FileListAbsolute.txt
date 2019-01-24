@@ -1,0 +1,10 @@
+C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\bin\Debug\Data_post_processing.exe.config
+C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\bin\Debug\Data_post_processing.exe
+C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\bin\Debug\Data_post_processing.pdb
+C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\obj\Debug\Data_post_processing.csprojAssemblyReference.cache
+C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\obj\Debug\Data_post_processing.Form1.resources
+C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\obj\Debug\Data_post_processing.Properties.Resources.resources
+C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\obj\Debug\Data_post_processing.csproj.GenerateResource.cache
+C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\obj\Debug\Data_post_processing.csproj.CoreCompileInputs.cache
+C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\obj\Debug\Data_post_processing.exe
+C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\obj\Debug\Data_post_processing.pdb
