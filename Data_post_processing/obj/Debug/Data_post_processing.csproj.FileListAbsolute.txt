@@ -8,3 +8,7 @@ C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\obj\Debug\
 C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\obj\Debug\Data_post_processing.csproj.CoreCompileInputs.cache
 C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\obj\Debug\Data_post_processing.exe
 C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\obj\Debug\Data_post_processing.pdb
+C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\bin\Debug\Data_post_processing.exe.manifest
+C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\bin\Debug\Data_post_processing.application
+C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\obj\Debug\Data_post_processing.exe.manifest
+C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\obj\Debug\Data_post_processing.application

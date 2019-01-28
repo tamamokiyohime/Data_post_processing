@@ -59,6 +59,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.ABS_Mode = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
@@ -279,6 +280,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.ABS_Mode);
             this.groupBox2.Controls.Add(this.checkBox3);
             this.groupBox2.Controls.Add(this.checkBox2);
             this.groupBox2.Controls.Add(this.label3);
@@ -298,11 +300,11 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(154, 50);
+            this.checkBox3.Location = new System.Drawing.Point(155, 40);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(96, 16);
+            this.checkBox3.Size = new System.Drawing.Size(120, 16);
             this.checkBox3.TabIndex = 22;
-            this.checkBox3.Text = "顯示資料替代";
+            this.checkBox3.Text = "顯示資料替代過程";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // checkBox2
@@ -347,6 +349,16 @@
             this.label6.Text = "資料讀入前\r\n請手動刪除極值";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // ABS_Mode
+            // 
+            this.ABS_Mode.AutoSize = true;
+            this.ABS_Mode.Location = new System.Drawing.Point(154, 60);
+            this.ABS_Mode.Name = "ABS_Mode";
+            this.ABS_Mode.Size = new System.Drawing.Size(133, 16);
+            this.ABS_Mode.TabIndex = 23;
+            this.ABS_Mode.Text = "Resualt.txt絕對值模式";
+            this.ABS_Mode.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -363,7 +375,7 @@
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "資料後處理 Ver1.0";
+            this.Text = "資料後處理 Ver1.1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -411,6 +423,7 @@
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox ABS_Mode;
     }
 }
 

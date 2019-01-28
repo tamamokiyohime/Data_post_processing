@@ -42,6 +42,7 @@ namespace Data_post_processing
                     0.00,
                     0.00
                 };
+        List<int> Column_Amount = new List<int>();
         int col = 0;
         int row = 0;
         int mutiple = 0;
@@ -77,7 +78,7 @@ namespace Data_post_processing
             StreamReader s = new StreamReader(input_path.FileName, Encoding.Default);
             //string ss = s.ReadLine();//skip the first line
             string[] columns = s.ReadLine().Split(',');
-            ds.Tables.Add("TableName");
+            ds.Tables.Add();
             foreach (string col in columns)
             {
                 bool added = false;
@@ -90,9 +91,9 @@ namespace Data_post_processing
                     columnname = columnname.Replace("'", "");
                     columnname = columnname.Replace("&", "");
 
-                    if (!ds.Tables["TableName"].Columns.Contains(columnname))
+                    if (!ds.Tables[0].Columns.Contains(columnname))
                     {
-                        ds.Tables["TableName"].Columns.Add(columnname.ToUpper());
+                        ds.Tables[0].Columns.Add(columnname.ToUpper());
                         added = true;
                     }
                     else
@@ -109,7 +110,7 @@ namespace Data_post_processing
             foreach (string r in rows)
             {
                 string[] items = r.Split(',');
-                ds.Tables["TableName"].Rows.Add(items);
+                ds.Tables[0].Rows.Add(items);
             }
 
             s.Close();
@@ -129,6 +130,7 @@ namespace Data_post_processing
 
         private void Calculas_Click(object sender, EventArgs e)
         {
+            Column_Amount.Clear();
             OutputDT.Clear();
             OutputDT = InputDT.Copy();
             col = 0;
@@ -150,16 +152,33 @@ namespace Data_post_processing
             {
                 avrB = sigB;
             }
-            
+
+            for (int i = 0; i < InputDT.Columns.Count; i++)
+            {
+                int temp = 0;
+                for(int j = 0; j < InputDT.Rows.Count; j++)
+                {
+                    if(OutputDT.Rows[j][i].ToString() != "")
+                    {
+                        temp += 1;
+                    }
+                }
+                Column_Amount.Add(temp);
+                textBox1.AppendText("col[" + i + "]=" + Column_Amount[i] + "\n");
+            }
             List<double> sum = new List<double>();
             
             //int target_col = 1;
 
             for (int target_col = 0; target_col < col; target_col++)
             {
+                
                 int amount = 2 * sigB;
-                for (int i = sigB; i < row - sigB-1; i++)
+                int test_row = 0;
+                textBox1.AppendText(test_row + "\n");
+                for (int i = sigB; i < Column_Amount[target_col] - sigB; i++)
                 {
+                    
                     double sumation = 0.00;
 
                     for (int j = -sigB; j <= sigB; j++)
@@ -200,7 +219,7 @@ namespace Data_post_processing
             int amount_B = 2 * avrB + 1;
             for (int target_col = 0; target_col < col; target_col++)
             {
-                for (int i = Math.Max(avrB, sigB); i < row - avrB - 1; i++)
+                for (int i = Math.Max(avrB, sigB); i < Column_Amount[target_col] - avrB; i++)
                 {
                     double sumation = 0.00;
 
@@ -268,44 +287,70 @@ namespace Data_post_processing
 
             }
 
+            //計算Resault.txt 資料
 
             int outputcol = OutputDT.Columns.Count;
             for (int target_col = 0; target_col < col; target_col++)
             {
                 double sumation_out = 0.00;
                 double sumation_in = 0.00;
-                int total = 0;
+                
                 int block = Math.Max(avrB, sigB);
+                int total = Column_Amount[target_col] - 2 * block;
 
-                for (int i = block; i < row - block - 1; i++)
+                for (int i = block; i < Column_Amount[target_col] - block; i++)
                 {
-                    sumation_out += double.Parse(OutputDT.Rows[i][target_col].ToString());
-                     sumation_in += double.Parse( InputDT.Rows[i][target_col].ToString());
-                    total++;
+                    if (ABS_Mode.Checked)
+                    {
+                        sumation_out += Math.Abs(double.Parse(OutputDT.Rows[i][target_col].ToString()));
+                        sumation_in  += Math.Abs(double.Parse(InputDT.Rows[i][target_col].ToString()));
+                    }
+                    else
+                    {
+                        sumation_out += double.Parse(OutputDT.Rows[i][target_col].ToString());
+                        sumation_in  += double.Parse(InputDT.Rows[i][target_col].ToString());
+                    }
+                    
+                    //total++;
                 }
                 double avr_out = sumation_out / total;
                 double avr_in = sumation_in / total;
                 double sigma_out = 0.00;
                 double sigma_in = 0.00;
-                for (int i = block; i < row - block - 1; i++)
+                for (int i = block; i < Column_Amount[target_col] - block; i++)
                 {
-                    double temp_out = double.Parse(OutputDT.Rows[i][target_col].ToString()) - avr_out;
-                    double  temp_in = double.Parse( InputDT.Rows[i][target_col].ToString()) - avr_out;
+                    double temp_out = 0.00;
+                    double temp_in = 0.00;
+
+                    if (ABS_Mode.Checked)
+                    {
+                        temp_out = Math.Abs(double.Parse(OutputDT.Rows[i][target_col].ToString())) - avr_out;
+                        temp_in  = Math.Abs(double.Parse(InputDT.Rows[i][target_col].ToString())) - avr_in;
+                    }
+                    else
+                    {
+                        temp_out = double.Parse(OutputDT.Rows[i][target_col].ToString()) - avr_out;
+                        temp_in = double.Parse(InputDT.Rows[i][target_col].ToString()) - avr_in;
+                    }
+                    
                     temp_out = temp_out * temp_out;
                      temp_in =  temp_in * temp_in;
                      sigma_in += temp_in;
                     sigma_out += temp_out;
                 }
                 sigma_in = Math.Sqrt(sigma_in / total);
-                sigma_out = Math.Sqrt(sigma_out/total);
-                textBox1.AppendText("I_RES_" + target_col.ToString() + ":(" + avr_in.ToString("F3") + "/" + sigma_in.ToString("F3") + ")\n");
+                sigma_out = Math.Sqrt(sigma_out/ total);
+                
                 InputAverage.Add(avr_in);
                 InputSD.Add(sigma_in);
-                textBox1.AppendText("O_RES_" + target_col.ToString() + ":(" + avr_out.ToString("F3") + "/" + sigma_out.ToString("F3") + ")\n");
+                
                 OutputAverage.Add(avr_out);
                 OutputSD.Add(sigma_out);
+
                 double IO_avr = (avr_out-avr_in) / avr_in ;
-                textBox1.AppendText("(AVR = " + IO_avr.ToString("P3") + ")\n");
+                //textBox1.AppendText("I_RES_" + target_col.ToString() + ":(" + avr_in.ToString("F3") + "/" + sigma_in.ToString("F3") + ")\n");
+                //textBox1.AppendText("O_RES_" + target_col.ToString() + ":(" + avr_out.ToString("F3") + "/" + sigma_out.ToString("F3") + ")\n");
+                //textBox1.AppendText("(AVR = " + IO_avr.ToString("P3") + ")\n");
             }
 
 
@@ -362,16 +407,21 @@ namespace Data_post_processing
                 "篩選倍率：" + mutiple + "\r\n" +
                 "標準化區間值：" + sigB + "\r\n" +
                 "均質化區間值：" + avrB + "\r\n" +
+                "Resault.txt 絕對值模式："+ABS_Mode.Checked + "\r\n" +
                 "******************************************\r\n";
             resault.Write(res_output);
             for(int i = 0; i < col; i++)
             {
                 resault.Write(columnRes(i, InputAverage[i], InputSD[i], OutputAverage[i], OutputSD[i]));
             }
-            for(int i = 0; i < 4; i++)
+            if (checkBox2.Checked)
             {
-                resault.Write(AddcolumnRes(i + 6, sumation[i], SD_add[i]));
+                for (int i = 0; i < 4; i++)
+                {
+                    resault.Write(AddcolumnRes(i + 6, sumation[i], SD_add[i]));
+                }
             }
+            
             resault.Dispose();
             resault.Close();
         }
@@ -379,7 +429,8 @@ namespace Data_post_processing
         public string columnRes(int targetcolumn, double before_avr, double before_SD, double average, double SD)
         {
             string s =
-                "欄位[" + targetcolumn + "]>>>"+OutputDT.Columns[targetcolumn].ColumnName+"\r\n" +
+                OutputDT.Columns[targetcolumn].ColumnName + "\t欄位[" + targetcolumn + "]\r\n" +
+                "資料筆數："+Column_Amount[targetcolumn] + "\r\n" +
                 "處理前平均值：" + before_avr.ToString("F4") + "\r\n" +
                 "處理前標準差：" + before_SD.ToString("F4") + "\r\n" +
                 "標準差/平均值 = " + (before_SD / before_avr).ToString("P3") + "\r\n" +

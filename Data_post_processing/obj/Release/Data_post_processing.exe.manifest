@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Data_post_processing.exe" size="319408">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Data_post_processing.exe" size="319920">
       <assemblyIdentity name="Data_post_processing" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>A6CV+Kr/8DMzIbdL+4aDtKUAIxLrsudbR05LHO/RVeE=</dsig:DigestValue>
+        <dsig:DigestValue>dbMUxRj2nhDlsK+kV9ZkdGdluYqrSN0j49lCD4BJv5k=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -11,3 +11,4 @@ C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\bin\Releas
 C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\bin\Release\Data_post_processing.application
 C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\obj\Release\Data_post_processing.exe.manifest
 C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\obj\Release\Data_post_processing.application
+C:\Users\tensh\source\repos\Data_post_processing\Data_post_processing\obj\Release\Data_post_processing.csprojAssemblyReference.cache
