@@ -5066,4 +5066,7 @@
         //+AEf//gAD//4AA//+AA///gDP//8A////Af///wf///w==
 </value>
   </data>
+  <metadata name="pack_floder_dialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>651, 17</value>
+  </metadata>
 </root>
