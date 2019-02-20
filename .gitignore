@@ -2,3 +2,23 @@
 \.vs/
 
 Data_post_processing/test\.CSV
+
+Data_post_processing/bin/Debug/app\.publish/
+
+Data_post_processing/bin/Debug/Data_post_processing\.application
+
+Data_post_processing/bin/Debug/Data_post_processing\.exe\.manifest
+
+Data_post_processing/bin/Debug/Data_post_processing\.pdb
+
+Data_post_processing/bin/Release/app\.publish/
+
+Data_post_processing/bin/Release/Data_post_processing\.application
+
+Data_post_processing/bin/Release/Data_post_processing\.exe\.manifest
+
+Data_post_processing/bin/Release/Data_post_processing\.pdb
+
+Data_post_processing/obj/Debug/
+
+Data_post_processing/obj/Release/

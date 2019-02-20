@@ -134,7 +134,7 @@ namespace Data_post_processing
             OutputDT.Clear();
             OutputDT = InputDT.Copy();
             col = 0;
-            col = InputDT.Columns.Count;
+            col = InputDT.Columns.Count-1;
             row = 0;
             row = InputDT.Rows.Count;
             mutiple = 0;
@@ -366,8 +366,19 @@ namespace Data_post_processing
         private void SaveDT_Click(object sender, EventArgs e)
         {
             string data = "";
-            string FileStr = output_path.SelectedPath;
-            string RESFileStr = output_path.SelectedPath;
+            string FileStr = "";
+            string RESFileStr = "";
+            if (output_path.SelectedPath == "")
+            {
+                FileStr = "D:\\";
+                RESFileStr = "D:\\";
+            }
+            else
+            {
+                FileStr = output_path.SelectedPath + "\\";
+                RESFileStr = output_path.SelectedPath + "\\";
+            }
+            
             RESFileStr += "Resault_" + input_path.SafeFileName;
             RESFileStr = RESFileStr.Substring(0, RESFileStr.Length - 4);
             RESFileStr += ".txt";
